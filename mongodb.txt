@@ -1,0 +1,18 @@
+net start MongoDB
+mongo
+show dbs
+db.createCollection("test");
+use test
+db.createUser({ user: "root", pwd: "root", roles: [{ role: "dbOwner", db: "test" }] })
+exit;
+net stop MongoDB
+
+mongod --dbpath "E:\Test-1 system\MongoDB\Server\4.0\data" --logpath "E:\Test-1 system\MongoDB\Server\4.0\log\mongod.log" --auth
+
+mongod  --auth --dbpath "E:\Test-1 system\MongoDB\Server\4.0\data"
+
+db.auth("root","root")
+db.system.users.find();
+
+db.auth("wangkang","123456")
+db.collection.find().pretty()
